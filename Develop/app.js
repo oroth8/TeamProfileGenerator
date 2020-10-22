@@ -9,11 +9,17 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const employees = [];
+let employees = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+function init(){
+  userPrompts();
+}
+init();
+
+function userPrompts(){
 inquirer
         .prompt([{
             type: "input",
@@ -49,7 +55,9 @@ inquirer
                       let newMember;
                       newMember = new Engineer(name, id, email, github);
                       employees.push(newMember);
-                      render(employees);
+                      render(employees)
+                      employees = [];
+                      addEmply();
             
             });
             break
@@ -64,7 +72,9 @@ inquirer
                             let newMember;
                             newMember = new Intern(name, id, email, school);
                             employees.push(newMember);
-                            
+                            render(employees);
+                            employees = [];
+                            addEmply();
                           }
                       )
                   break
@@ -79,12 +89,36 @@ inquirer
                             let newMember;
                             newMember = new  Manager(name, id, email, officeNumber);
                             employees.push(newMember);
+                            render(employees);
+                            employees = [];
+                            addEmply();
                              
                           }
                       )
                   break
           }});
+        }
 
+        function addEmply() {
+          inquirer.prompt({
+              type: "confirm",
+              message: "Add other Team Members?",
+              name: "addOtherMembers"
+          }).then(
+              function ({ addOtherMembers }) {
+                  console.log("add other members", addOtherMembers)
+                  if (addOtherMembers) {
+                      console.log(employees);
+                      userPrompts()
+                  }
+              }
+          )
+              .catch(err => {
+                  console.log("Error adding other members", err)
+                  throw err
+              })
+      }
+      
           
 
 
