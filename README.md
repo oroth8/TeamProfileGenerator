@@ -1,4 +1,4 @@
-
+![GIF](https://media.giphy.com/media/SyVz23H3YgyUDLeUnZ/giphy.gif)
 # Team Profile Generator
 
 # Table of Contents
