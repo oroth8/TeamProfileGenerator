@@ -1,6 +1,8 @@
 ![GIF](https://media.giphy.com/media/SyVz23H3YgyUDLeUnZ/giphy.gif)
 # Team Profile Generator
 
+![TestPassScreenShot](.\Assets\npmtestpass.PNG)
+
 # Table of Contents
 -[Description](#description)
 -[Installation](#installation)
